@@ -62,6 +62,18 @@
         </template>
       </sidebar-link>
 
+      <sidebar-link to="/hostelsetup">
+        <i class="tim-icons icon-bank"></i>
+
+        <template v-if="!isRTL">
+          <p>Hostel Setup</p>
+        </template>
+
+        <template v-else>
+          <p>لوحة القيادة</p>
+        </template>
+      </sidebar-link>
+
       <sidebar-link to="/roommaster">
         <i class="tim-icons icon-bank"></i>
 

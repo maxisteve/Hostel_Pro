@@ -11,6 +11,7 @@ import Bill from "@/pages/Bill.vue";
 import RoomMaster from "@/pages/RoomMaster.vue";
 import FloorMaster from "@/pages/FloorMaster.vue";
 import BlockMaster from "@/pages/BlockMaster.vue";
+import HostelSetup from "@/pages/HostelSetup.vue";
 import TableList from "@/pages/TableList.vue";
 import Typography from "@/pages/Typography.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
@@ -25,6 +26,11 @@ const routes = [
         path: "dashboard",
         name: "Dashboard",
         component: Dashboard,
+      },
+      {
+        path: "hostelsetup",
+        name: "Hostel Setup",
+        component: HostelSetup,
       },
       {
         path: "roommaster",
