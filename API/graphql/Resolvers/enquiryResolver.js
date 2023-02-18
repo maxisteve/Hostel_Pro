@@ -1,22 +1,22 @@
-const Enquiry = require('../models/Enquiry');
+const Enquiry = require('../../models/Enquiry');
 
 
 module.exports = {
 
-Query:{
+ 
+    enquiry:async(args) => {
 
-    async enquiry (_, args){
+        
         return await Enquiry.findById(args.ID);
     },
 
-    async getEnquiry (_, args){
+    getEnquiry:async(args) => {
         return await Enquiry.find().sort({CreatedAt:-1}).limit(args.amount);
     },
 
 
-},
-Mutation:{
-        async createEnquiry(_,args){
+ 
+        createEnquiry:async(args) => {
 
             console.log(args);
 
@@ -45,10 +45,9 @@ Mutation:{
                 ...res._doc
             }
         },
-        async deleteEnquiry(_,args)
+        deleteEnquiry:async(args) => 
         {
             const wasDeleted = (await Enquiry.deleteOne({_id:args.ID})).deletedCount
             return  wasDeleted;
         }
-    }
 }

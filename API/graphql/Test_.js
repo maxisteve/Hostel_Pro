@@ -1,4 +1,7 @@
-const Enquiry = require('../../../models/Enquiry');
+
+// resolvers
+
+const Enquiry = require('../models/Enquiry');
 
 
 module.exports = {

@@ -1,22 +1,19 @@
-const Room = require('../../../models/Room');
+const Room = require('../../../models/RoomDetail');
 
 
 module.exports = {
 
-Query:{
 
-    async room (_, args){
+     room:async(args) => {
         return await Room.findById(args.ID);
     },
 
-    async getRoomList (_, args){
+     getRoomList:async(args) => {
         return await Room.find().sort({CreatedAt:-1}).limit(args.amount);
     },
 
 
-},
-Mutation:{
-        async createRoom(_,args){
+        createRoom:async(args) => {
 
             console.log(args);
 
@@ -44,10 +41,9 @@ Mutation:{
                 ...res._doc
             }
         },
-        async deleteEnquiry(_,args)
-        {
+        deleteRoom:async(args) => {
+
             const wasDeleted = (await Enquiry.deleteOne({_id:args.ID})).deletedCount
             return  wasDeleted;
         }
     }
-}
