@@ -19,6 +19,20 @@ type Enquiry{
     IsActive: Boolean,
 }
 
+type Room{
+    Id:String,
+    StudentId: String,
+    EBCharge: String,
+    EBUnit: String,
+    EBLastUnit: String,
+    Fees: String,
+    Status: String,
+    Date: String,
+    PaidDate: String,
+    Remarks: String,
+    CreatedAt: String,
+    IsActive: Boolean
+}
 
 ### Input Object
 
@@ -36,12 +50,26 @@ input EnquiryInput{
     Remarks: String,
 }
 
+input RoomInput{
+StudentId: String,
+EBCharge: String,
+EBUnit: String,
+EBLastUnit: String,
+Fees: String,
+Status: String,
+Date: String,
+PaidDate: String,
+Remarks: String
+}
 
 
 ### get Methods [Read (GetbyId, List, Filters ) ]
 type Query {
     enquiry(ID:ID!) : Enquiry!
     getEnquiry(amount:Int) : [Enquiry]
+
+    room(ID:ID!) : Room!
+    getRoom(amount:Int) : [Room]
 }
 
 
@@ -49,5 +77,9 @@ type Query {
 type Mutation{
     createEnquiry(enquiryInput:EnquiryInput):Enquiry!
     deleteEnquiry(ID:ID!):Boolean
+
+    createRoom(roomInput:RoomInput):Room!
+    deleteRoom(ID:ID!):Boolean
+
 }
 `
