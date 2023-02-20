@@ -1,29 +1,23 @@
-
-// resolvers
-
-const Enquiry = require('../models/Enquiry');
+const BlockDetails = require('../../../models/BlockDetails');
 
 
 module.exports = {
 
-Query:{
-
-    async enquiry (_, args){
-        return await Enquiry.findById(args.ID);
+ 
+    getBlockDetailsByID:async(args) => {
+        return await BlockDetails.findById(args.ID);
     },
 
-    async getEnquiry (_, args){
-        return await Enquiry.find().sort({CreatedAt:-1}).limit(args.amount);
+    getBlockDetailsList:async(args) => {
+        return await BlockDetails.find().sort({CreatedAt:-1}).limit(args.amount);
     },
 
-
-},
-Mutation:{
-        async createEnquiry(_,args){
+ 
+        createBlockDetails:async(args) => {
 
             console.log(args);
 
-            const createEnquiry = new Enquiry({
+            const createBlockDetails = new BlockDetails({
                 Name: args.enquiryInput.Name,
                 Phone: args.enquiryInput.Phone,
                 Email: args.enquiryInput.Email,
@@ -40,7 +34,7 @@ Mutation:{
             });
 
 
-            const res = await createEnquiry.save(); //Mongo Saving
+            const res = await createBlockDetails.save(); //Mongo Saving
 
             console.log(res)
             return {
@@ -48,10 +42,9 @@ Mutation:{
                 ...res._doc
             }
         },
-        async deleteEnquiry(_,args)
+        deleteBlockDetails:async(args) => 
         {
-            const wasDeleted = (await Enquiry.deleteOne({_id:args.ID})).deletedCount
+            const wasDeleted = (await BlockDetails.deleteOne({_id:args.ID})).deletedCount
             return  wasDeleted;
         }
-    }
 }

@@ -4,16 +4,15 @@ const Room = require('../../../models/RoomDetail');
 module.exports = {
 
 
-     room:async(args) => {
+    getRoomByID:async(args) => {
         return await Room.findById(args.ID);
     },
 
-     getRoomList:async(args) => {
+    getRoomList:async(args) => {
         return await Room.find().sort({CreatedAt:-1}).limit(args.amount);
     },
 
-
-        createRoom:async(args) => {
+    createRoom:async(args) => {
 
             console.log(args);
 
@@ -40,10 +39,12 @@ module.exports = {
                 id:res.id,
                 ...res._doc
             }
-        },
-        deleteRoom:async(args) => {
+    },
+
+    deleteRoom:async(args) => {
 
             const wasDeleted = (await Enquiry.deleteOne({_id:args.ID})).deletedCount
             return  wasDeleted;
-        }
+    }
+
     }

@@ -1,26 +1,23 @@
-const Enquiry = require('../../models/Enquiry');
+const StudentDetail = require('../../../models/StudentDetail');
 
 
 module.exports = {
 
  
-    enquiry:async(args) => {
-
-        
-        return await Enquiry.findById(args.ID);
+    getStudentDetailByID:async(args) => {
+        return await StudentDetail.findById(args.ID);
     },
 
-    getEnquiry:async(args) => {
-        return await Enquiry.find().sort({CreatedAt:-1}).limit(args.amount);
+    getStudentDetailList:async(args) => {
+        return await StudentDetail.find().sort({CreatedAt:-1}).limit(args.amount);
     },
-
 
  
-        createEnquiry:async(args) => {
+        createStudentDetail:async(args) => {
 
             console.log(args);
 
-            const createEnquiry = new Enquiry({
+            const createStudentDetail = new StudentDetail({
                 Name: args.enquiryInput.Name,
                 Phone: args.enquiryInput.Phone,
                 Email: args.enquiryInput.Email,
@@ -37,7 +34,7 @@ module.exports = {
             });
 
 
-            const res = await createEnquiry.save(); //Mongo Saving
+            const res = await createStudentDetail.save(); //Mongo Saving
 
             console.log(res)
             return {
@@ -45,9 +42,9 @@ module.exports = {
                 ...res._doc
             }
         },
-        deleteEnquiry:async(args) => 
+        deleteStudentDetail:async(args) => 
         {
-            const wasDeleted = (await Enquiry.deleteOne({_id:args.ID})).deletedCount
+            const wasDeleted = (await StudentDetail.deleteOne({_id:args.ID})).deletedCount
             return  wasDeleted;
         }
 }
