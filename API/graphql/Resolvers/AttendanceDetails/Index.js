@@ -1,4 +1,5 @@
 const Attendance = require('../../../models/Attendance');
+const { isNullorEmptyorUndefined } = require('../../Common/CommonMethods');
 
 
 module.exports = {
@@ -12,39 +13,84 @@ module.exports = {
         return await Attendance.find().sort({CreatedAt:-1}).limit(args.amount);
     },
 
- 
-        createAttendance:async(args) => {
+    ListAttendanceByStudentId:async(args) => {
+        return await Attendance.find({StudentId:args.StudentId}).sort({CreatedAt:-1}).limit(args.amount);
+    },
 
-            console.log(args);
+    createAttendance:async(args) => {
 
-            const createAttendance = new Attendance({
-                Name: args.enquiryInput.Name,
-                Phone: args.enquiryInput.Phone,
-                Email: args.enquiryInput.Email,
-                Occupation: args.enquiryInput.Occupation,
-                CompanyOrInstitution: args.enquiryInput.CompanyOrInstitution,
-                Address: args.enquiryInput.Address,
-                City: args.enquiryInput.City,
-                State: args.enquiryInput.State,
-                Country: args.enquiryInput.Country,
-                PinCode: args.enquiryInput.PinCode,
-                Remarks: args.enquiryInput.Remarks,
-                CreatedAt: new Date().toISOString(),
-                IsActive: true,
-            });
-
-
-            const res = await createAttendance.save(); //Mongo Saving
-
-            console.log(res)
-            return {
-                id:res.id,
-                ...res._doc
+            var result  = {};
+            var resultObj = {
+                Id: null,
+                StudentId:null,
+                InTime:null,
+                OutTime:null,
+                Remarks: null,
+                CreatedAt: null,
+                IsActive: null,
             }
-        },
-        deleteAttendance:async(args) => 
-        {
-            const wasDeleted = (await Attendance.deleteOne({_id:args.ID})).deletedCount
-            return  wasDeleted;
-        }
+
+            var  FindResult =  await Attendance.findOne({"OutTime":null});
+
+            if(args.AttendanceInput.TranType =="In" && FindResult == null)
+            {
+                
+                const createAttendance = new Attendance({
+                    StudentId: args.AttendanceInput.StudentId,
+                    InTime: new Date().toISOString(),
+                    OutTime: null,
+                    Remarks: args.AttendanceInput.Remarks,
+                    CreatedAt: new Date().toISOString(),
+                    IsActive: true,
+                });
+    
+                const res = await createAttendance.save(); //Mongo Saving
+
+                result = {
+                    id:res.id,
+                    ...res._doc
+                }
+            }
+            else if(args.AttendanceInput.TranType =="Out")
+            {
+
+                if(FindResult == null)
+                {
+                    resultObj.Remarks ="student not In flag",
+                    result = resultObj;
+                }
+                else
+                {
+                 
+                    var FindID = (FindResult._id).toString();
+                    UpdateResult =  await Attendance.updateOne({"_id":FindID},{$set:{OutTime:new Date().toISOString()}});
+                    var finalResult = await Attendance.findOne({"_id":FindID});
+                    if(isNullorEmptyorUndefined(UpdateResult) && UpdateResult.modifiedCount)
+                    {
+                        result =  finalResult
+                    }
+                    else
+                    {
+                        if(!isNullorEmptyorUndefined(UpdateResult) &&  !UpdateResult.modifiedCount)
+                        {
+                            resultObj.Remarks ="Not Updated",
+                            result =  resultObj;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                    resultObj.Remarks ="student Already In flag",
+                    result =  resultObj;
+            }
+
+            return result
+    },
+    
+    deleteAttendance:async(args) => 
+    {
+        const wasDeleted = (await Attendance.deleteOne({_id:args.ID})).deletedCount
+        return  wasDeleted;
+    }
 }

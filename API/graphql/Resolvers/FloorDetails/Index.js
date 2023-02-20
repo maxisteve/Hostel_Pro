@@ -18,17 +18,11 @@ module.exports = {
             console.log(args);
 
             const createFloorDetails = new FloorDetails({
-                Name: args.enquiryInput.Name,
-                Phone: args.enquiryInput.Phone,
-                Email: args.enquiryInput.Email,
-                Occupation: args.enquiryInput.Occupation,
-                CompanyOrInstitution: args.enquiryInput.CompanyOrInstitution,
-                Address: args.enquiryInput.Address,
-                City: args.enquiryInput.City,
-                State: args.enquiryInput.State,
-                Country: args.enquiryInput.Country,
-                PinCode: args.enquiryInput.PinCode,
-                Remarks: args.enquiryInput.Remarks,
+                FloorName: args.FloorInput.Name,
+                FloorNumber: args.FloorInput.Phone,
+                NoOfRooms: args.FloorInput.Email,
+                BlockId: args.FloorInput.Occupation,
+                Remarks: args.FloorInput.Remarks,
                 CreatedAt: new Date().toISOString(),
                 IsActive: true,
             });

@@ -18,17 +18,17 @@ module.exports = {
             console.log(args);
 
             const createStudentDetail = new StudentDetail({
-                Name: args.enquiryInput.Name,
-                Phone: args.enquiryInput.Phone,
-                Email: args.enquiryInput.Email,
-                Occupation: args.enquiryInput.Occupation,
-                CompanyOrInstitution: args.enquiryInput.CompanyOrInstitution,
-                Address: args.enquiryInput.Address,
-                City: args.enquiryInput.City,
-                State: args.enquiryInput.State,
-                Country: args.enquiryInput.Country,
-                PinCode: args.enquiryInput.PinCode,
-                Remarks: args.enquiryInput.Remarks,
+                Name: args.StudentInput.Name,
+                Phone: args.StudentInput.Phone,
+                Email: args.StudentInput.Email,
+                Occupation: args.StudentInput.Occupation,
+                CompanyOrInstitution: args.StudentInput.CompanyOrInstitution,
+                Address: args.StudentInput.Address,
+                City: args.StudentInput.City,
+                State: args.StudentInput.State,
+                Country: args.StudentInput.Country,
+                PinCode: args.StudentInput.PinCode,
+                Remarks: args.StudentInput.Remarks,
                 CreatedAt: new Date().toISOString(),
                 IsActive: true,
             });

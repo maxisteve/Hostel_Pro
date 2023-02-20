@@ -27,12 +27,12 @@ module.exports = resolvers = {
         getBillList: (_, args) => BillDetailsResolver.getBillList(args),
 
         // Block
-        getBlockByID: (_, args) => BlockDetailsResolver.getBlockByID(args),
-        getBlockList: (_, args) => BlockDetailsResolver.getBlockList(args),
+        getBlockDetailsByID: (_, args) => BlockDetailsResolver.getBlockDetailsByID(args),
+        getBlockDetailsList: (_, args) => BlockDetailsResolver.getBlockDetailsList(args),
 
         // Floor
-        getFloorByID: (_, args) => FloorDetailsResolver.getFloorByID(args),
-        getFloorList: (_, args) => FloorDetailsResolver.getFloorList(args),
+        getFloorDetailsByID: (_, args) => FloorDetailsResolver.getFloorDetailsByID(args),
+        getFloorDetailsList: (_, args) => FloorDetailsResolver.getFloorDetailsList(args),
 
         // Hostel
         getHostelByID: (_, args) => HostelDetailsResolver.getHostelByID(args),
@@ -49,6 +49,7 @@ module.exports = resolvers = {
         //AttendanceResolver
         getAttendanceByID: (_, args) => AttendanceResolver.getAttendanceByID(args),
         getAttendanceList: (_, args) => AttendanceResolver.getAttendanceList(args),
+        ListAttendanceByStudentId: (_, args) => AttendanceResolver.ListAttendanceByStudentId(args),
 
         //UserMaster
         getUserMasterByID: (_, args) => UserDetailsResolver.getUserMasterByID(args),

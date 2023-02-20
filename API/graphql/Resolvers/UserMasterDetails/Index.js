@@ -16,17 +16,12 @@ module.exports = {
     createUserMaster:async(args) => {
             console.log(args);
             const createUserMaster = new UserMaster({
-                Name: args.enquiryInput.Name,
-                Phone: args.enquiryInput.Phone,
-                Email: args.enquiryInput.Email,
-                Occupation: args.enquiryInput.Occupation,
-                CompanyOrInstitution: args.enquiryInput.CompanyOrInstitution,
-                Address: args.enquiryInput.Address,
-                City: args.enquiryInput.City,
-                State: args.enquiryInput.State,
-                Country: args.enquiryInput.Country,
-                PinCode: args.enquiryInput.PinCode,
-                Remarks: args.enquiryInput.Remarks,
+                Name: args.UserMasterInput.Name,
+                UserName: args.UserMasterInput.UserName,
+                Password: args.UserMasterInput.Password,
+                EmailId: args.UserMasterInput.EmailId,
+                UserType: args.UserMasterInput.UserType,
+                Remarks: args.UserMasterInput.Remarks,
                 CreatedAt: new Date().toISOString(),
                 IsActive: true,
             });

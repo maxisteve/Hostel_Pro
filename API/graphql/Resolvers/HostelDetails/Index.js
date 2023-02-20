@@ -18,17 +18,15 @@ module.exports = {
             console.log(args);
 
             const createHostelSetup = new HostelSetup({
-                Name: args.enquiryInput.Name,
-                Phone: args.enquiryInput.Phone,
-                Email: args.enquiryInput.Email,
-                Occupation: args.enquiryInput.Occupation,
-                CompanyOrInstitution: args.enquiryInput.CompanyOrInstitution,
-                Address: args.enquiryInput.Address,
-                City: args.enquiryInput.City,
-                State: args.enquiryInput.State,
-                Country: args.enquiryInput.Country,
-                PinCode: args.enquiryInput.PinCode,
-                Remarks: args.enquiryInput.Remarks,
+                HostelName: args.HostelInput.HostelName,
+                HostelAddress: args.HostelInput.HostelAddress,
+                InchargeName: args.HostelInput.InchargeName,
+                InchargeMailId: args.HostelInput.InchargeMailId,
+                InchargePhone: args.HostelInput.InchargePhone,
+                GST: args.HostelInput.GST,
+                HostelPhone: args.HostelInput.HostelPhone,
+                HostelMailId: args.HostelInput.HostelMailId,
+                Remarks: args.HostelInput.Remarks,
                 CreatedAt: new Date().toISOString(),
                 IsActive: true,
             });

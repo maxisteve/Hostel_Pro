@@ -70,17 +70,17 @@ type StudentDetail{
 
 type Attendance{
     Id: String,
-    StudentId: String,
-    EBCharge: String,
-    EBUnit: String,
-    EBLastUnit: String,
-    Fees: String,
-    Status: String,
-    Date: String,
-    PaidDate: String,
+    StudentId:String,
+    InTime:String,
+    OutTime:String,
     Remarks: String,
     CreatedAt: String,
     IsActive: Boolean,
+}
+
+type ListAttendanceByStudentIdInput{
+    StudentId:String,
+    amount:String,
 }
 
 type BillDetail{
@@ -137,6 +137,8 @@ type LoginHistory{
     IsActive: Boolean,
 }
 
+
+ 
 
 
 ### Input Object
@@ -196,6 +198,8 @@ input FloorInput{
     CreatedAt: String,
     IsActive: Boolean,
 }
+
+
 
 input HostelInput{
     HostelName: String,
@@ -270,18 +274,9 @@ input StudentDetailInput{
 }
 
 input AttendanceInput{
-    Id: String,
-    StudentId: String,
-    EBCharge: String,
-    EBUnit: String,
-    EBLastUnit: String,
-    Fees: String,
-    Status: String,
-    Date: String,
-    PaidDate: String,
+    StudentId:String,
     Remarks: String,
-    CreatedAt: String,
-    IsActive: Boolean,
+    TranType: String,
 }
 
 
@@ -301,12 +296,12 @@ type Query {
     getBillList(amount:Int) : [BillDetail]
 
     ### Block
-    getBlockByID(ID:ID!) : BlockDetail!
-    getBlockList(amount:Int) : [BlockDetail]
+    getBlockDetailsByID(ID:ID!) : BlockDetail!
+    getBlockDetailsList(amount:Int) : [BlockDetail]
 
     ### Floor
-    getFloorByID(ID:ID!) : FloorDetail!
-    getFloorList(amount:Int) : [FloorDetail]
+    getFloorDetailsByID(ID:ID!) : FloorDetail!
+    getFloorDetailsList(amount:Int) : [FloorDetail]
 
     ###  Hostel
     getHostelByID(ID:ID!) : HostelDetail!
@@ -323,11 +318,13 @@ type Query {
 
     ### Attendance
     getAttendanceByID(ID:ID!) : Attendance!
-    getAttendanceList(amount:Int) : [Attendance]    
+    getAttendanceList(amount:Int) : [Attendance]
+    ListAttendanceByStudentId(StudentId:String, amount:Int) : [Attendance]
+    
 
     ### UserMaster
-    getUserMasterByID(ID:ID!) : Attendance!
-    getUserMasterList(amount:Int) : [Attendance]    
+    getUserMasterByID(ID:ID!) : UserMaster!
+    getUserMasterList(amount:Int) : [UserMaster]    
 
 
 }
@@ -368,5 +365,4 @@ type Mutation{
     deleteLoginHistory(ID:ID!):Boolean
 
 
-}
-`
+}`
