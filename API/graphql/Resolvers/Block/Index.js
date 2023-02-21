@@ -18,10 +18,8 @@ module.exports = {
     },
 
  
-        createBlockDetails:async(args) => {
-
-            console.log(args);
-
+    createBlockDetails:async(args) => {
+        
             const createBlockDetails = new BlockDetails({
                 Name: args.BlockInput.Name,
                 Remarks: args.BlockInput.Remarks,
@@ -42,5 +40,12 @@ module.exports = {
         {
             const wasDeleted = (await BlockDetails.deleteOne({_id:args.ID})).deletedCount
             return  wasDeleted;
+        },
+
+        UpdateBlockDetails:async(args) => 
+        {
+            const wasDeleted = (await BlockDetails.updateOne({_id:args.ID},{$set:{NoOfFloor:"2"}})).modifiedCount;
+            return  wasDeleted;
         }
+        // 63f391cfc6fcb8ac2b1d1835
 }

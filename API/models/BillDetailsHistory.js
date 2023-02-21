@@ -1,6 +1,6 @@
 const {model, Schema} = require('mongoose');
 
-const billdetailsSchema = new Schema({
+const billdetailshistorySchema = new Schema({
     Id: String,
     StudentId: String,
     EBCharge: String,
@@ -11,10 +11,9 @@ const billdetailsSchema = new Schema({
     Date: String,
     PaidDate: String,
     Remarks: String,
-    UpdatedBy: String,
-    UpdatedAt: String,
+    CreatedBy: String,
     CreatedAt: String,
     IsActive: Boolean,
 });
 
-module.exports = model('BillDetails',billdetailsSchema);
+module.exports = model('BillDetailsHistory',billdetailshistorySchema);

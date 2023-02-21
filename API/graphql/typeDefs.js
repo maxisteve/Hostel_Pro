@@ -21,14 +21,11 @@ type Enquiry{
 
 type Room{
     Id:String,
-    StudentId: String,
-    EBCharge: String,
-    EBUnit: String,
-    EBLastUnit: String,
-    Fees: String,
-    Status: String,
-    Date: String,
-    PaidDate: String,
+    RoomNumber:String,
+    RoomType:String,
+    NoOfOccupancy:String,
+    FloorId:String,
+    Fees:String,
     Remarks: String,
     CreatedAt: String,
     IsActive: Boolean
@@ -58,6 +55,7 @@ type StudentDetail{
     GuardianName: String,
     GuardianPhone: String,
     GuardianEmail: String,
+    GuardianAddress: String,
     City: String,
     State: String,
     Country: String,
@@ -101,6 +99,7 @@ type BillDetail{
 type BlockDetail{
     Id: String,
     Name: String,
+    NoOfFloor:String,
     Remarks: String,
     CreatedAt: String,
     IsActive: Boolean,
@@ -111,6 +110,7 @@ type FloorDetail{
     FloorNumber: String,
     NoOfRooms: String,
     BlockId: String,
+    Remarks: String,
     CreatedAt: String,
     IsActive: Boolean,
 }
@@ -158,15 +158,12 @@ input EnquiryInput{
 }
 
 input RoomInput{
-    StudentId: String,
-    EBCharge: String,
-    EBUnit: String,
-    EBLastUnit: String,
-    Fees: String,
-    Status: String,
-    Date: String,
-    PaidDate: String,
-    Remarks: String
+    RoomNumber:String,
+    RoomType:String,
+    NoOfOccupancy:String,
+    FloorId:String,
+    Fees:String,
+    Remarks: String,
 }
 
 input BillInput{
@@ -175,19 +172,14 @@ input BillInput{
     EBUnit: String,
     EBLastUnit: String,
     Fees: String,
-    Status: String,
     Date: String,
-    PaidDate: String,
     Remarks: String,
-    CreatedAt: String,
-    IsActive: Boolean,
 }
 
 input BlockInput{
     Name: String,
     Remarks: String,
-    CreatedAt: String,
-    IsActive: Boolean,
+    NoOfFloor:String,
 }
 
 input FloorInput{
@@ -195,10 +187,7 @@ input FloorInput{
     FloorNumber: String,
     NoOfRooms: String,
     BlockId: String,
-    CreatedAt: String,
-    IsActive: Boolean,
 }
-
 
 
 input HostelInput{
@@ -211,14 +200,10 @@ input HostelInput{
     HostelPhone:String,
     HostelMailId: String,
     Remarks: String,
-    CreatedAt: String,
-    IsActive: Boolean,
 }
 
 input LoginInput{
     UserId:String,
-    CreatedAt: String,
-    IsActive: Boolean,
 }
 
 input StudentInput{
@@ -253,13 +238,13 @@ input UserMasterInput{
  
 
 input StudentDetailInput{
-    Id:String,
     Name: String,
     Email: String,
     Phone: String,
     Address: String,
     Occupation: String,
     CompanyOrInstitution: String,
+    GuardianAddress: String,
     GuardianName: String,
     GuardianPhone: String,
     GuardianEmail: String,
@@ -269,8 +254,6 @@ input StudentDetailInput{
     PinCode: String,
     Remarks: String,
     RoomId: String,
-    CreatedAt: String,
-    IsActive: Boolean,
 }
 
 input AttendanceInput{
@@ -290,10 +273,13 @@ type Query {
     ### Room
     getRoomByID(ID:ID!) : Room!
     getRoomList(amount:Int) : [Room]
+    getRoomListByFloorID(FloorId:String) : [Room]
+
 
     ### Bill
-    getBillByID(ID:ID!) : BillDetail!
-    getBillList(amount:Int) : [BillDetail]
+    getBillDetailsByID(ID:ID!) : BillDetail!
+    getBillDetailsList(amount:Int) : [BillDetail]
+    getBillDetailsListByStudentID(StudentId:String) : [BillDetail]
 
     ### Block
     getBlockDetailsByID(ID:ID!) : BlockDetail!
@@ -312,8 +298,8 @@ type Query {
     getLoginList(amount:Int) : [LoginHistory]
 
     ### Student
-    getStudentByID(ID:ID!) : StudentDetail!
-    getStudentList(amount:Int) : [StudentDetail]
+    getStudentDetailByID(ID:ID!) : StudentDetail!
+    getStudentDetailList(amount:Int) : [StudentDetail]
 
 
     ### Attendance
@@ -339,10 +325,12 @@ type Mutation{
     createRoom(roomInput:RoomInput):Room!
     deleteRoom(ID:ID!):Boolean
 
-    createBillDetails(BillInput:BillInput):BillDetail!
+    createBillDetails(BillInput:BillInput):[BillDetail]!
+    PayBill(BillInput:BillInput):BillDetail!
     deleteBillDetails(ID:ID!):Boolean
 
     createBlockDetails(BlockInput:BlockInput):BlockDetail!
+    UpdateBlockDetails(ID:ID!):Boolean
     deleteBlockDetails(ID:ID!):Boolean
 
     createFloorDetails(FloorInput:FloorInput):FloorDetail!
@@ -359,7 +347,6 @@ type Mutation{
 
     createUserMaster(UserMasterInput:UserMasterInput):UserMaster!
     deleteUserMaster(ID:ID!):Boolean
-
     
     createLoginHistory(LoginInput:LoginInput):LoginHistory!
     deleteLoginHistory(ID:ID!):Boolean

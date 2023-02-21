@@ -4,6 +4,7 @@ const {model, Schema} = require('mongoose');
 const blockSchema = new Schema({
     Id: String,
     Name: String,
+    NoOfFloor: String,
     Remarks: String,
     CreatedAt: String,
     IsActive: Boolean,

@@ -9,26 +9,45 @@ module.exports = {
     },
 
     getStudentDetailList:async(args) => {
-        return await StudentDetail.find().sort({CreatedAt:-1}).limit(args.amount);
+
+
+        var res =  await StudentDetail.find().sort({CreatedAt:-1}).limit(args.amount);
+
+        res.map(function(StudentDetail) {
+            StudentDetail.Id = (StudentDetail._id).toString();
+        })
+        return res;
     },
 
- 
-        createStudentDetail:async(args) => {
+    getStudentDetailListByRoomId:async(args) => {
 
-            console.log(args);
+        var res =  await StudentDetail.find({RoomId:args.RoomId}).sort({CreatedAt:-1});
+        res.map(function(StudentDetail) {
+            StudentDetail.Id = (StudentDetail._id).toString();
+        })
+        return res;
+    },
 
-            const createStudentDetail = new StudentDetail({
-                Name: args.StudentInput.Name,
-                Phone: args.StudentInput.Phone,
-                Email: args.StudentInput.Email,
-                Occupation: args.StudentInput.Occupation,
-                CompanyOrInstitution: args.StudentInput.CompanyOrInstitution,
-                Address: args.StudentInput.Address,
-                City: args.StudentInput.City,
-                State: args.StudentInput.State,
-                Country: args.StudentInput.Country,
-                PinCode: args.StudentInput.PinCode,
-                Remarks: args.StudentInput.Remarks,
+    createStudentDetail:async(args) => {
+
+
+        const createStudentDetail = new StudentDetail({
+                Name: args.StudentDetailInput.Name,
+                Email: args.StudentDetailInput.Email,
+                Phone: args.StudentDetailInput.Phone,
+                Address: args.StudentDetailInput.Address,
+                Occupation: args.StudentDetailInput.Occupation,
+                CompanyOrInstitution: args.StudentDetailInput.CompanyOrInstitution,
+                GuardianName: args.StudentDetailInput.GuardianName,
+                GuardianPhone: args.StudentDetailInput.GuardianPhone,
+                GuardianEmail: args.StudentDetailInput.GuardianEmail,
+                GuardianAddress: args.StudentDetailInput.GuardianAddress,
+                City: args.StudentDetailInput.City,
+                State: args.StudentDetailInput.State,
+                Country: args.StudentDetailInput.Country,
+                PinCode: args.StudentDetailInput.PinCode,
+                Remarks: args.StudentDetailInput.Remarks,
+                RoomId: args.StudentDetailInput.RoomId,
                 CreatedAt: new Date().toISOString(),
                 IsActive: true,
             });

@@ -1,5 +1,5 @@
 const Room = require('../../../models/RoomDetail');
-
+const FloorDetails = require('../../../models/FloorDetails');
 
 module.exports = {
 
@@ -9,36 +9,72 @@ module.exports = {
     },
 
     getRoomList:async(args) => {
-        return await Room.find().sort({CreatedAt:-1}).limit(args.amount);
+
+         var listRoom =  await Room.find().sort({CreatedAt:-1}).limit(args.amount);
+
+         listRoom.map(function(room) {
+            room.Id = room._id.toString();
+         })
+         return listRoom;
     },
+
+
+    getRoomListByFloorID:async(args) => {
+
+        console.log(args.FloorId);
+        var listRoom =  await Room.find({FloorId:args.FloorId}).sort({CreatedAt:-1}).limit(args.amount);
+        listRoom.map(function(room) {
+           room.Id = room._id.toString();
+        })
+        return listRoom;
+   },
+
 
     createRoom:async(args) => {
 
-            console.log(args);
+        var resultObj = {
+            Id:null,
+            FloorName:null,
+            FloorNumber:null,
+            NoOfRooms:null,
+            BlockId:null,
+            CreatedAt:null,
+            IsActive:null,
+        }
+        var objFloorDetails = await FloorDetails.findById(args.roomInput.FloorId);
+        var listRoom =await Room.find({FloorId:args.roomInput.FloorId});
+        var res=null;
 
-
+        if(objFloorDetails.NoOfRooms > listRoom.length)
+        {
             const createRoom = new Room({
-                StudentId: args.roomInput.StudentId,
-                EBCharge: args.roomInput.EBCharge,
-                EBUnit: args.roomInput.EBUnit,
-                EBLastUnit: args.roomInput.EBLastUnit,
-                Fees: args.roomInput.Fees,
-                Status: args.roomInput.Status,
-                Date: args.roomInput.Date,
-                PaidDate: args.roomInput.PaidDate,
+                
+                RoomNumber:args.roomInput.RoomNumber,
+                RoomType:args.roomInput.RoomType,
+                NoOfOccupancy:args.roomInput.NoOfOccupancy,
+                FloorId:args.roomInput.FloorId,
+                Fees:args.roomInput.Fees,
                 Remarks: args.roomInput.Remarks,
                 CreatedAt: new Date().toISOString(),
-                IsActive: true,
+                IsActive: true
+
             });
 
 
-            const res = await createRoom.save(); //Mongo Saving
-
-            console.log(res)
-            return {
+             res = await createRoom.save(); //Mongo Saving
+             resultObj={
                 id:res.id,
                 ...res._doc
-            }
+             }
+
+        }
+        else
+        {
+            resultObj.Remarks="Floor Already Filled";
+        }
+
+
+            return resultObj;
     },
 
     deleteRoom:async(args) => {

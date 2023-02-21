@@ -6,6 +6,7 @@ const floordetailSchema = new Schema({
     FloorNumber: String,
     NoOfRooms: String,
     BlockId: String,
+    Remarks: String,
     CreatedAt: String,
     IsActive: Boolean,
 });

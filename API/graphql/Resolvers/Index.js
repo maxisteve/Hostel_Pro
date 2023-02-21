@@ -21,10 +21,11 @@ module.exports = resolvers = {
         // Room
         getRoomByID: (_, args) => RoomResolver.getRoomByID(args),
         getRoomList: (_, args) => RoomResolver.getRoomList(args),
+        getRoomListByFloorID: (_, args) => RoomResolver.getRoomList(args),
 
         // Bill
-        getBillByID: (_, args) => BillDetailsResolver.getBillByID(args),
-        getBillList: (_, args) => BillDetailsResolver.getBillList(args),
+        getBillDetailsByID: (_, args) => BillDetailsResolver.getBillDetailsByID(args),
+        getBillDetailsList: (_, args) => BillDetailsResolver.getBillDetailsList(args),
 
         // Block
         getBlockDetailsByID: (_, args) => BlockDetailsResolver.getBlockDetailsByID(args),
@@ -43,8 +44,8 @@ module.exports = resolvers = {
         getLoginList: (_, args) => LoginDetailsResolver.getLoginList(args),
 
         // Student
-        getStudentByID: (_, args) => StudentDetailsResolver.getStudentByID(args),
-        getStudentList: (_, args) => StudentDetailsResolver.getStudentList(args),
+        getStudentDetailByID: (_, args) => StudentDetailsResolver.getStudentDetailByID(args),
+        getStudentDetailList: (_, args) => StudentDetailsResolver.getStudentDetailList(args),
 
         //AttendanceResolver
         getAttendanceByID: (_, args) => AttendanceResolver.getAttendanceByID(args),
@@ -64,15 +65,17 @@ module.exports = resolvers = {
         deleteEnquiry: (_, args) => EnquiryResolver.deleteEnquiry(args),
 
         // Room
-        createRoom: (_, args) => EnquiryResolver.createRoom(args),
-        deleteRoom: (_, args) => EnquiryResolver.deleteRoom(args),
+        createRoom: (_, args) => RoomResolver.createRoom(args),
+        deleteRoom: (_, args) => RoomResolver.deleteRoom(args),
 
         // Bill
         createBillDetails: (_, args) => BillDetailsResolver.createBillDetails(args),
+        PayBill: (_, args) => BillDetailsResolver.PayBill(args),
         deleteBillDetails: (_, args) => BillDetailsResolver.deleteBillDetails(args),
 
         // Block
         createBlockDetails: (_, args) => BlockDetailsResolver.createBlockDetails(args),
+        UpdateBlockDetails: (_, args) => BlockDetailsResolver.UpdateBlockDetails(args),
         deleteBlockDetails: (_, args) => BlockDetailsResolver.deleteBlockDetails(args),
 
         // Floor
