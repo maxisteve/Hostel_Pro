@@ -53,11 +53,11 @@ export default {
   },
   methods: {
     hasValue(item, column) {
-      console.log(item[column.toLowerCase()]);
-      return item[column.toLowerCase()] !== "undefined";
+      console.log(item[column]);
+      return item[column] !== "undefined";
     },
     itemValue(item, column) {
-      return item[column.toLowerCase()];
+      return item[column];
     },
   },
 };

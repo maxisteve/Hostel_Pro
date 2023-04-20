@@ -18,7 +18,7 @@
           </button>
         </div>
 
-        <a class="navbar-brand" href="javascript:void(0)"> {{ $route.name }}</a>
+        <a class="navbar-brand" href="javascript:void(0)">{{ $route.name }}</a>
       </div>
 
       <button
@@ -39,7 +39,7 @@
 
       <div class="collapse navbar-collapse show text-left" v-show="showMenu">
         <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-          <li class="search-bar input-group" @click="searchModalVisible = true">
+          <!-- <li class="search-bar input-group" @click="searchModalVisible = true">
             <button
               class="btn btn-link"
               id="search-button"
@@ -50,7 +50,7 @@
 
               <span class="d-lg-none d-md-block">Search</span>
             </button>
-          </li>
+          </li> -->
 
           <modal
             :show.sync="searchModalVisible"
@@ -69,7 +69,7 @@
             />
           </modal>
 
-          <drop-down>
+          <!-- <drop-down>
             <a
               href="javascript:void(0)"
               data-toggle="dropdown"
@@ -113,7 +113,7 @@
                 </a>
               </li>
             </ul>
-          </drop-down>
+          </drop-down> -->
 
           <drop-down>
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -127,7 +127,7 @@
             </a>
 
             <ul class="dropdown-menu dropdown-navbar">
-              <li class="nav-link">
+              <!-- <li class="nav-link">
                 <a href="javascript:void(0)" class="nav-item dropdown-item">
                   Profile
                 </a>
@@ -137,9 +137,9 @@
                 <a href="javascript:void(0)" class="nav-item dropdown-item">
                   Settings
                 </a>
-              </li>
+              </li> -->
 
-              <li class="dropdown-divider"></li>
+              <!-- <li class="dropdown-divider"></li> -->
 
               <li class="nav-link">
                 <a href="javascript:void(0)" class="nav-item dropdown-item">

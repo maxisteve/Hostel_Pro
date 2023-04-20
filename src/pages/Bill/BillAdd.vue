@@ -1,6 +1,7 @@
 <template>
   <card>
     <template slot="header">
+      <base-button style="float: right;" @click="BacktoDashboard"  type="success" fill>Back To Dashboard</base-button>
       <h5 class="title">Bill</h5>
     </template>
     <div class="row">
@@ -84,6 +85,13 @@ export default {
     Card,
     BaseInput,
     BaseButton,
+  },
+  methods:{
+    BacktoDashboard(){
+      this.$router.push({
+                  name: 'Bill Details'
+              })
+    },
   },
   props: {
     model: {

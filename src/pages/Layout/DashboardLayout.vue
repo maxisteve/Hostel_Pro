@@ -14,11 +14,23 @@
 
       </sidebar-link> -->
 
-      <sidebar-link to="/dashboard">
+      <!-- <sidebar-link to="/dashboard">
         <i class="tim-icons icon-chart-pie-36"></i>
 
         <template v-if="!isRTL">
           <p>Dashboard</p>
+        </template>
+
+        <template v-else>
+          <p>لوحة القيادة</p>
+        </template>
+      </sidebar-link> -->
+
+      <sidebar-link to="/attendance">
+        <i class="tim-icons icon-badge"></i>
+
+        <template v-if="!isRTL">
+          <p>Attendance</p>
         </template>
 
         <template v-else>
@@ -62,17 +74,7 @@
         </template>
       </sidebar-link>
 
-      <sidebar-link to="/hostelsetup">
-        <i class="tim-icons icon-bank"></i>
 
-        <template v-if="!isRTL">
-          <p>Hostel Setup</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
-      </sidebar-link>
 
       <sidebar-link to="/roommaster">
         <i class="tim-icons icon-bank"></i>
@@ -110,7 +112,18 @@
         </template>
       </sidebar-link>
 
-      <sidebar-link to="/icons">
+      <sidebar-link to="/hostelsetup">
+        <i class="tim-icons icon-bank"></i>
+
+        <template v-if="!isRTL">
+          <p>Hostel Setup</p>
+        </template>
+
+        <template v-else>
+          <p>لوحة القيادة</p>
+        </template>
+      </sidebar-link>
+      <!-- <sidebar-link to="/icons">
         <i class="tim-icons icon-atom"></i>
 
         <template v-if="!isRTL">
@@ -120,7 +133,7 @@
         <template v-else>
           <p>الرموز</p>
         </template>
-      </sidebar-link>
+      </sidebar-link> -->
 
       <!-- <sidebar-link to="/maps">
         <i class="tim-icons icon-pin"></i>
@@ -134,7 +147,7 @@
         </template>
       </sidebar-link> -->
 
-      <sidebar-link to="/notifications">
+      <!-- <sidebar-link to="/notifications">
         <i class="tim-icons icon-bell-55"></i>
 
         <template v-if="!isRTL">
@@ -144,9 +157,9 @@
         <template v-else>
           <p>إخطارات</p>
         </template>
-      </sidebar-link>
+      </sidebar-link> -->
 
-      <sidebar-link to="/user">
+      <!-- <sidebar-link to="/user">
         <i class="tim-icons icon-single-02"></i>
 
         <template v-if="!isRTL">
@@ -156,9 +169,9 @@
         <template v-else>
           <p>ملف تعريفي للمستخدم</p>
         </template>
-      </sidebar-link>
+      </sidebar-link> -->
 
-      <sidebar-link to="/table">
+      <!-- <sidebar-link to="/table">
         <i class="tim-icons icon-puzzle-10"></i>
 
         <template v-if="!isRTL">
@@ -168,7 +181,7 @@
         <template v-else>
           <p>قائمة الجدول</p>
         </template>
-      </sidebar-link>
+      </sidebar-link> -->
 
       <!-- <sidebar-link to="/typography">
         <i class="tim-icons icon-align-center"></i>

@@ -92,6 +92,7 @@ type BillDetail{
     Date: String,
     PaidDate: String,
     Remarks: String,
+    StudentDetail:StudentDetail,
     CreatedAt: String,
     IsActive: Boolean,
 }

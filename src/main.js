@@ -20,7 +20,7 @@ import App from "./App.vue";
 import "@/assets/scss/white-dashboard.scss";
 import "@/assets/css/nucleo-icons.css";
 import "@/assets/demo/demo.css";
-
+import axios from 'axios';
 import GlobalComponents from "./globalComponents";
 import GlobalDirectives from "./globalDirectives";
 import RTLPlugin from "./RTLPlugin";
@@ -46,8 +46,9 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(RTLPlugin);
 Vue.use(SideBar);
+Vue.use(axios, axios)
 Vue.use(Notify);
-
+axios.defaults.baseURL = 'http://localhost:5000/';
 new Vue({
   router,
   i18n,

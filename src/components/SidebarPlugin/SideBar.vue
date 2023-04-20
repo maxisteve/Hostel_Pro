@@ -11,7 +11,7 @@
           class="simple-text logo-normal"
           :class="$rtl.isRTL ? '' : 'text-left'"
         >
-          {{ title }}
+        {{ title }}
         </a>
       </div>
       <ul class="nav">
@@ -33,11 +33,11 @@ export default {
   props: {
     abv: {
       type: String,
-      default: "CT",
+      default: "HM",
     },
     title: {
       type: String,
-      default: "Hostal Mgnt",
+      default: "DORMITORY Mgnt",
     },
     backgroundColor: {
       type: String,

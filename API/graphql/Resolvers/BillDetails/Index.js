@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 const BillDetails = require('../../../models/BillDetails');
 const StudentDetail = require('../../../models/StudentDetail');
 const RoomDetail = require('../../../models/RoomDetail');
-
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
 
@@ -13,19 +14,29 @@ module.exports = {
 
     getBillDetailsList:async(args) => {
 
+        // eslint-disable-next-line prettier/prettier
         
-        var listBill = await BillDetails.find().sort({CreatedAt:-1}).limit(args.amount);
-        listBill.map(function(billDetails){
-            billDetails.Id = (billDetails._id).toString()
-        })
-        return listBill;
+      var Listobj = await BillDetails.find().sort({CreatedAt:-1}).limit(args.amount);
+
+      for (var i = 0; i < Listobj.length; i++)
+      {
+        console.log(ObjectId(Listobj[i].StudentId));
+        var  selectedStudentDetail = await StudentDetail.find(ObjectId(Listobj[i].StudentId))
+        if(selectedStudentDetail.length>0)
+            Listobj[i].StudentDetail =selectedStudentDetail[0];
+      }
+       
+        return Listobj;
     },
 
     getBillDetailsListByStudentID:async(args) => {
         var listBill = await BillDetails.find({StudentId:args.StudentId}).sort({CreatedAt:-1}).limit(args.amount);
-        listBill.map(function(billDetails){
-            billDetails.Id = (billDetails._id).toString()
-        })
+        // listBill.map(function(billDetails){
+        //     billDetails.Id = (billDetails._id).toString()
+        // })
+
+
+
         return listBill;
     },
 

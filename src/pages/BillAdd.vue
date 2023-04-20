@@ -1,44 +1,19 @@
 <template>
   <div class="content">
     <div class="row">
-      <!-- <div class="col-md-6">
-        <bill-add :model="model"> </bill-add>
-      </div> -->
       <div class="col-md-12">
-        <!-- <user-card :user="user"></user-card> -->
-        <card class="card-plain">
-          <template slot="header">
-            <h4 class="card-title">{{model.table2.title}} </h4>
-            <base-button style="float: right;" @click="payBill"  type="success" fill>Pay Bill</base-button>
-            <p class="category">{{ model.table2.subTitle }}</p>
-          </template>
-          <div class="table-full-width table-responsive text-left">
-            <base-table
-              :title="model.table2.title"
-              :sub-title="model.table2.subTitle"
-              :data="model.table2.data"
-              :columns="model.table2.columns"
-            >
-            </base-table>
-          </div>
-        </card>
+        <bill-add :model="model"> </bill-add>
       </div>
     </div>
   </div>
 </template>
 <script>
 
-import { Card } from "@/components/index";
-import BaseTable from "@/components/BaseTable";
 import BillAdd from "./Bill/BillAdd.vue";
-import UserCard from "./Profile/UserCard.vue";
 import axios from "axios";
 export default {
   components: {
     BillAdd,
-    // ,UserCard,
-    Card,
-    BaseTable,
   },
   data() {
     return {
@@ -77,11 +52,6 @@ export default {
   },
   methods:{
 
-    payBill() {
-              this.$router.push({
-                  name: 'Bill Pay'
-              })
-          },
 
     GetBillDetails() {
             let vm = this;

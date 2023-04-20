@@ -13,22 +13,22 @@
         </base-input>
       </div>
       <div class="col-md-4 pl-md-1 text-left">
-        <base-input label="Email address" type="email" placeholder="mike@email.com">
+        <base-input label="Email address" type="email" placeholder="email">
         </base-input>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-4 pr-md-1 text-left">
-        <base-input label="Incharge Name" v-model="model.firstName" placeholder="Occuption">
+        <base-input label="Incharge Name" v-model="model.firstName" placeholder="Incharge Name">
         </base-input>
       </div>
       <div class="col-md-4 px-md-1 text-left">
-        <base-input label="Incharge Phone" v-model="model.lastName" placeholder="Company / institution">
+        <base-input label="Incharge Phone" v-model="model.lastName" placeholder="Incharge Phone">
         </base-input>
       </div>
       <div class="col-md-4 pl-md-1 text-left">
-        <base-input label="Incharge Email" v-model="model.lastName" placeholder="Company / institution">
+        <base-input label="Incharge Email" v-model="model.lastName" placeholder="Incharge Email">
         </base-input>
       </div>
     </div>

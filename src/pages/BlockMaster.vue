@@ -43,7 +43,7 @@ export default {
     return {
       model: {
         table2: {
-        title: "Room Master Details",
+        title: "Block Master Details",
         subTitle:"",
         columns: ["No", "BlockName", "NoOfFloors"],
         data: [

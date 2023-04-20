@@ -1,19 +1,20 @@
 <template>
   <card>
     <template slot="header">
+      <base-button style="float: right;" @click="Dashboard"  type="success" fill>Dashboard</base-button>
       <h5 class="title">Student Details</h5>
     </template>
     <div class="row">
       <div class="col-md-5 pr-md-1 text-left">
-        <base-input label="Name" placeholder="Company" v-model="model.company">
+        <base-input label="Name" placeholder="Name" v-model="model.company">
         </base-input>
       </div>
       <div class="col-md-3 px-md-1 text-left">
-        <base-input label="Phone" placeholder="Username" v-model="model.username">
+        <base-input label="Phone" placeholder="Phone" v-model="model.username">
         </base-input>
       </div>
       <div class="col-md-4 pl-md-1 text-left">
-        <base-input label="Email address" type="email" placeholder="mike@email.com">
+        <base-input label="Email address" type="email" placeholder="email">
         </base-input>
       </div>
     </div>
@@ -74,6 +75,11 @@ export default {
     BaseInput,
     BaseButton,
   },
+  methods:{
+    Dashboard(){
+      alert("Dashboard");
+    }
+  },  
   props: {
     model: {
       type: Object,

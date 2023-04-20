@@ -1,15 +1,15 @@
 <template>
   <card>
     <template slot="header">
-      <h5 class="title">Room Master</h5>
+      <h5 class="title">Block Master</h5>
     </template>
     <div class="row">
       <div class="col-md-6 pr-md-1 text-left">
-        <base-input label="Block Name" placeholder="Room Number" v-model="model.RoomNumber">
+        <base-input label="Block Name" placeholder="Block Name" v-model="model.RoomNumber">
         </base-input>
       </div>
       <div class="col-md-6 pl-md-1 text-left">
-        <base-input label="No. Of. Occupence" type="email" placeholder="No. Of. Occupence" v-model="model.NoOfOccupence">
+        <base-input label="No. Of. Floors" type="email" placeholder="No. Of. Floors" v-model="model.NoOfOccupence">
         </base-input>
       </div>
     </div>

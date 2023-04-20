@@ -1,6 +1,9 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
-import Dashboard from "@/pages/Dashboard.vue";
+// import Dashboard from "@/pages/Dashboard.vue";
+
+
+import Attendance from "@/pages/Attendance.vue";
 import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
@@ -8,6 +11,7 @@ import UserProfile from "@/pages/UserProfile.vue";
 import Enquiry from "@/pages/Enquiry.vue";
 import StudentDetails from "@/pages/StudentDetails.vue";
 import Bill from "@/pages/Bill.vue";
+import BillPay from "@/pages/BillAdd.vue";
 import RoomMaster from "@/pages/RoomMaster.vue";
 import FloorMaster from "@/pages/FloorMaster.vue";
 import BlockMaster from "@/pages/BlockMaster.vue";
@@ -20,17 +24,22 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "dashboard",
+    redirect: "enquiry",
     children: [
-      {
-        path: "dashboard",
-        name: "Dashboard",
-        component: Dashboard,
-      },
+      // {
+      //   path: "dashboard",
+      //   name: "Dashboard",
+      //   component: Dashboard,
+      // },
       {
         path: "hostelsetup",
         name: "Hostel Setup",
         component: HostelSetup,
+      },
+      {
+        path: "attendance",
+        name: "Attendance",
+        component: Attendance,
       },
       {
         path: "roommaster",
@@ -44,8 +53,13 @@ const routes = [
       },
       {
         path: "bill",
-        name: "Bill",
+        name: "Bill Details",
         component: Bill,
+      },
+      {
+        path: "billpay",
+        name: "Bill Pay",
+        component: BillPay,
       },
       {
         path: "floormaster",
